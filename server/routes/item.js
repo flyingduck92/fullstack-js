@@ -1,5 +1,11 @@
-const itemRoutes = require('express').Router()
+const { ItemController } = require("../controllers")
+const itemRouter = require("express").Router()
 
-itemRoutes.get('/', (req, res) => res.json('hello from item Routes /'))
+itemRouter.get("/", ItemController.getItems)
+itemRouter.post("/add", ItemController.add)
+itemRouter.delete("/delete/:id", ItemController.delete)
+itemRouter.put("/edit/:id", ItemController.edit)
+itemRouter.get("/search", ItemController.search)
+itemRouter.get("/details/:id", ItemController.getItemById)
 
-module.exports = itemRoutes
+module.exports = itemRouter

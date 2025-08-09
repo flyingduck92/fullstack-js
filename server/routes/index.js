@@ -1,10 +1,20 @@
-const apiRoutes = require('express').Router()
-const itemRoutes = require('./item')
+const router = require("express").Router()
+const base = "api"
 
-const apiBased = 'api'
+router.get(`/${base}`, (req, res) => {
+  res.json({ message: "WEB API" })
+})
 
-apiRoutes.get(`/${apiBased}`, (req, res) => res.json('Hello from API Routes /'))
+const itemRouters = require("./item")
+const userRouters = require("./user")
+const typeRouters = require("./type")
+// const profileRouters = require("./profile");
+const brandRouters = require("./brand")
 
-apiRoutes.use(`/${apiBased}/items`, itemRoutes)
+router.use(`/${base}/items`, itemRouters)
+router.use(`/${base}/users`, userRouters)
+router.use(`/${base}/types`, typeRouters)
+// router.use(`/${base}/profiles`, profileRouters)
+router.use(`/${base}/brands`, brandRouters)
 
-module.exports = apiRoutes
+module.exports = router

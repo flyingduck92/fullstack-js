@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "createDB": "npx sequelize-cli db:create",
+    "migrateDB": "npx sequelize-cli db:migrate",
+    "DB": "npm run createDB && npm run migrateDB"
   },
   "keywords": [],
   "author": "",
